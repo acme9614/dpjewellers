@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DP Jewellers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+      <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <section>
+      <header
+        class="text-gray-900 flex items-center justify-between px-4 md:px-10 md:py-5 shadow-lg"
+      >
+        <!-- Logo -->
+        <div class="text-2xl font-bold text-[#133235] flex items-center gap-2">
+          <img
+            src="assets/footer-logo.jpg"
+            alt="DP Jewellers Logo"
+            class="h-16"
+          />
+        </div>
+
+        <h1
+          class="text-center font-bold m-0 xl:m-2 py-3 xl:py-0 table-row text-[clamp(1.5rem,3vw,2rem)] text-[#602222]"
+        >
+          DP ABHUSHAN LIMITED
+        </h1>
+
+        <!-- Hamburger Icon -->
+        <button
+          id="menu-toggle"
+          class="focus:outline-none"
+          aria-label="Open Menu"
+        >
+          <svg
+            class="w-10 h-10 text-[#133235]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <!-- Left Drawer -->
+      <div
+        id="drawer"
+        class="fixed top-0 left-0 w-1/2 max-w-sm h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out"
+      >
+        <div class="flex justify-between items-center px-4 py-4 border-b">
+          <!-- Logo -->
+          <div
+            class="text-2xl font-bold text-[#133235] flex items-center gap-2"
+          >
+            <img
+              src="assets/footer-logo.jpg"
+              alt="DP Jewellers Logo"
+              class="h-16"
+            />
+          </div>
+          <button
+            id="close-drawer"
+            class="text-gray-500 hover:text-black"
+            aria-label="Close Menu"
+          >
+            ✕
+          </button>
+        </div>
+        <nav class="flex flex-col gap-4 px-6 py-6 text-[#133235]">
+          <a href="#" onclick="navigateToScheme()" class="hover:text-[#a7704a]"
+            >Scheme</a
+          >
+          <a
+            href="#"
+            onclick="navigateToBankDetails()"
+            class="hover:text-[#a7704a]"
+            >Bank</a
+          >
+          <a href="#" onclick="navigateToKyc()" class="hover:text-[#a7704a]"
+            >KYC</a
+          >
+          <a href="#" onclick="navigateToRate()" class="hover:text-[#a7704a]"
+            >Rate</a
+          >
+          <a
+            href="#"
+            onclick="navigateSchemeRecords()"
+            class="hover:text-[#a7704a]"
+            >Records</a
+          >
+          <a
+            href="#"
+            onclick="navigateToCustomerCard()"
+            class="hover:text-[#a7704a]"
+            >Card</a
+          >
+          <a
+            href="#"
+            onclick="navigateTransactionHistory()"
+            class="hover:text-[#a7704a]"
+            >History</a
+          >
+          <a href="#" onclick="navigateToMyOrder()" class="hover:text-[#a7704a]"
+            >Order</a
+          >
+          <a
+            href="#"
+            onclick="navigateToUserProfile()"
+            class="hover:text-[#a7704a]"
+            >Profile</a
+          >
+          <a
+            href="#"
+            onclick="navigateToDigitalGold()"
+            class="hover:text-[#a7704a]"
+            >Gold</a
+          >
+          <a
+            href="#"
+            onclick="navigateToPanchang()"
+            class="hover:text-[#a7704a]"
+            >Panchang</a
+          >
+          <a href="#" onclick="navigateToSetting()" class="hover:text-[#a7704a]"
+            >Settings</a
+          >
+        </nav>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+      ></div>
+    </section>
+
+    <!-- swipers sliders  -->
+    <section>
+      <!-- ✅ Full Width Swiper Banner Slider with Logo -->
+      <div class="w-full" id="brandSwiper">
+        <div class="swiper brandSwiper w-full relative">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide relative">
+              <img
+                src="assets/brand.jpg"
+                alt="Logo"
+                class="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 object-contain z-10"
+              />
+              <img
+                src="assets/slider6.jpg"
+                alt="Brand 1"
+                class="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[600px] object-fill"
+              />
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide relative">
+              <img
+                src="assets/brand.jpg"
+                alt="Logo"
+                class="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 object-contain z-10"
+              />
+              <img
+                src="assets/slider4.jpg"
+                alt="Brand 2"
+                class="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[600px] object-fill"
+              />
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide relative">
+              <img
+                src="assets/brand.jpg"
+                alt="Logo"
+                class="absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 object-contain z-10"
+              />
+              <img
+                src="assets/slider5.jpg"
+                alt="Brand 3"
+                class="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[600px] object-fill"
+              />
+            </div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <div class="swiper-button-next hidden lg:flex"></div>
+          <div class="swiper-button-prev hidden lg:flex"></div>
+
+          <!-- Pagination Dots -->
+          <div
+            class="swiper-pagination absolute bottom-4 left-0 right-0 mx-auto text-center z-10"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!--  servies  -->
+    <section class="">
+      <img src="assets/banner-top.jpg" alt="Brand 1" class="w-full" />
+      <!-- services  -->
+      <section class="">
+        <!-- Mobile Swiper (Hidden on md and up) -->
+        <div class="md:hidden px-4 py-5">
+          <div class="swiper tabSwiper">
+            <div class="swiper-wrapper">
+              <!-- box1  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToScheme()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/10150/10150740.png"
+                      alt="Scheme"
+                    />
+                    <p class="text-white font-semibold">Scheme</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box2  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToBankDetails()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/522/522554.png"
+                      alt="Bank"
+                    />
+                    <p class="text-white font-semibold">Bank</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box3 -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToKyc()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/18282/18282110.png"
+                      alt="KYC"
+                    />
+                    <p class="text-white font-semibold">KYC</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box4  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToRate()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/592/592015.png"
+                      alt="Rate"
+                    />
+                    <p class="text-white font-semibold">Rate</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box5  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateSchemeRecords()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/2910/2910768.png"
+                      alt="Records"
+                    />
+                    <p class="text-white font-semibold">Records</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box6  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToCustomerCard()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/3037/3037255.png"
+                      alt="Card"
+                    />
+                    <p class="text-white font-semibold">Card</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box7 -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateTransactionHistory()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/3503/3503786.png"
+                      alt="History"
+                    />
+                    <p class="text-white font-semibold">History</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box8 -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToMyOrder()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/10597/10597732.png"
+                      alt="Order"
+                    />
+                    <p class="text-white font-semibold">Order</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box9 -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToUserProfile()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/1946/1946429.png"
+                      alt="Profile"
+                    />
+                    <p class="text-white font-semibold">Profile</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box10 -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToDigitalGold()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/1473/1473430.png"
+                      alt="Gold"
+                    />
+                    <p class="text-white font-semibold">Gold</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box11  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToPanchang()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/3013/3013143.png"
+                      alt="panchang"
+                    />
+                    <p class="text-white font-semibold">Panchang</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box12  -->
+              <div class="swiper-slide">
+                <div
+                  onclick="navigateToSetting()"
+                  class="flex flex-col items-center"
+                  data-aos="fade-up"
+                >
+                  <div
+                    class="w-[110px] h-[22px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+                  ></div>
+                  <div
+                    class="w-[100px] h-[110px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+                  >
+                    <img
+                      class="w-12 h-12 my-3 invert"
+                      src="https://cdn-icons-png.flaticon.com/128/2099/2099058.png"
+                      alt="Settings"
+                    />
+                    <p class="text-white font-semibold">Settings</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Grid (Hidden on mobile) -->
+        <div
+          class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-4 justify-items-center md:px-4 lg:px-64 pb-5"
+        >
+          <div
+            onclick="navigateToScheme()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/10150/10150740.png"
+                alt="Scheme"
+              />
+              <p class="text-white font-semibold">Scheme</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToBankDetails()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/522/522554.png"
+                alt="Bank"
+              />
+              <p class="text-white font-semibold">Bank</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToKyc()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/18282/18282110.png"
+                alt="KYC"
+              />
+              <p class="text-white font-semibold">KYC</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToRate()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/592/592015.png"
+                alt="Rate"
+              />
+              <p class="text-white font-semibold">Rate</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateSchemeRecords()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/2910/2910768.png"
+                alt="Records"
+              />
+              <p class="text-white font-semibold">Records</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToCustomerCard()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/3037/3037255.png"
+                alt="card"
+              />
+              <p class="text-white font-semibold">Card</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateTransactionHistory()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/3503/3503786.png"
+                alt="History"
+              />
+              <p class="text-white font-semibold">History</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToMyOrder()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/10597/10597732.png"
+                alt="order"
+              />
+              <p class="text-white font-semibold">Order</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToUserProfile()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/1946/1946429.png"
+                alt="profile"
+              />
+              <p class="text-white font-semibold">Profile</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToDigitalGold()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/1473/1473430.png"
+                alt="gold"
+              />
+              <p class="text-white font-semibold">Gold</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToPanchang()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/3013/3013143.png"
+                alt="panchang"
+              />
+              <p class="text-white font-semibold">Panchang</p>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateToSetting()"
+            class="flex flex-col items-center cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-[120px] h-[25px] bg-[#E7BA5C] rounded-t-full shadow-lg"
+            ></div>
+            <div
+              class="w-[110px] h-[130px] bg-[#6B0328] clip-banner shadow-lg flex flex-col items-center"
+            >
+              <img
+                class="w-14 h-14 my-3 invert"
+                src="https://cdn-icons-png.flaticon.com/128/2099/2099058.png"
+                alt="setting"
+              />
+              <p class="text-white font-semibold">Settings</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- About Section -->
+    <section class="text-center" id="about">
+      <h2
+        class="text-xl md:text-4xl uppercase text-[#602222] py-6"
+        data-aos="fade-down"
+      >
+        Discover the story behind <br />
+        DP JEWELLERS
+      </h2>
+
+      <!-- Top Banner Image -->
+      <img
+        src="assets/about-banner.jpg"
+        alt="About Banner"
+        class="w-full"
+        data-aos="zoom-in"
+      />
+
+      <div
+        class="max-w-5xl text-lg md:text-2xl mx-auto space-y-4 text-gray-700 px-4 py-8 font-amiko"
+      >
+        <p data-aos="fade-up" data-aos-delay="100">
+          "D.P. Jewellers" is the venture of D.P. Abhushan Ltd., a partnership
+          firm converted into a limited company in 2017 and registered under
+          the Companies Act, 2013.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="200">
+          The journey of D.P. Jewellers began in 1940 in Ratlam, Madhya Pradesh.
+          Founded by Late Shri Dhulchand Ji Kataria during India’s independence
+          struggle, he laid the foundation of the brand's legacy. His son, Late
+          Shri Panna Lal Ji Kataria, carried it forward with purity and
+          transparency at its core.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="300">
+          In 85+ years, D.P. Jewellers has grown into a retail chain across 10+
+          cities including Ratlam, Indore, Udaipur, and more — led by the
+          Kataria family over generations.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="400">
+          The young generation continues the journey with dedication, trust, and
+          honest business practices — values that define the brand today.
+        </p>
+
+        <p
+          class="text-dp font-semibold text-xl italic mt-4"
+          data-aos="zoom-in-up"
+          data-aos-delay="500"
+        >
+          “Definitely Promising Jewellers”
+        </p>
+      </div>
+    </section>
+
+  <!-- WHY DP JEWELLERS SECTION -->
+  <section class="w-full px-4 md:px-12 py-10 bg-white text-center">
+    <h2 class="text-xl md:text-4xl uppercase text-[#602222] pb-10" data-aos="fade-up">
+      Why DP Jewellers?
+    </h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center relative">
+      <!-- Item 1 -->
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/icon1.png" alt="Classic Designer Collection" class="mb-3 w-16 h-16" />
+        <h3 class="text-sm font-semibold text-[#602222]">CLASSIC DESIGNER COLLECTION</h3>
+        <span class="block absolute top-0 right-0 h-full w-px bg-gray-300"></span>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/icon2.png" alt="100% Satisfaction" class="mb-3 w-16 h-16" />
+        <h3 class="text-sm font-semibold text-[#602222]">100% SATISFACTION</h3>
+        <span class="block absolute top-0 right-0 h-full w-px bg-gray-300"></span>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+        <img src="assets/icon3.png" alt="Transparency" class="mb-3 w-16 h-16" />
+        <h3 class="text-sm font-semibold text-[#602222]">TRANSPARENCY</h3>
+        <span class="block absolute top-0 right-0 h-full w-px bg-gray-300"></span>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="400">
+        <img src="assets/icon4.png" alt="Guaranteed Exchange" class="mb-3 w-16 h-16" />
+        <h3 class="text-sm font-semibold text-[#602222]">
+          100% GUARANTEED <br /> EXCHANGE
+        </h3>
+        <span class="block absolute top-0 right-0 h-full w-px bg-gray-300"></span>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="500">
+        <img src="assets/icon5.png" alt="Best Price Guaranteed" class="mb-3 w-16 h-16" />
+        <h3 class="text-sm font-semibold text-[#602222]">
+          BEST PRICE <br /> GUARANTEED
+        </h3>
+        <span class="block absolute top-0 right-0 h-full w-px bg-gray-300"></span>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="600">
+        <img src="assets/icon6.png" alt="Trustworthy" class="mb-3 w-16 h-16" />
+        <h3 class="text-sm font-semibold text-[#602222]">TRUSTWORTHY</h3>
+      </div>
+    </div>
+  </section>
+
+      <!-- footer  -->
+    <footer class="bg-[#F5D9BF]">
+      <div class="w-full px-4 py-6 md:py-10  text-black">
+        <div
+          class="max-w-6xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-2 items-start"
+        >
+          <div class="flex flex-col gap-4 mt-4 md:mt-0 md:mb-10">
+            <!-- Center: Logo -->
+            <div class="w-2/3">
+              <a
+                href="#"
+                class="flex justify-start md:justify-center items-center space-x-2"
+              >
+                <img
+                  src="assets/footer-logo.jpg"
+                  alt="dpjewellers"
+                  class="h-24 w-auto"
+                />
+              </a>
+            </div>
+
+            
+            <div>
+              <p class="text-lg text-start md:text-center md:w-2/3">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dignissimos dolorum debitis aut doloremque dolores.
+              </p>
+            </div>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="space-y-3">
+            <p class="font-playfair font-semibold text-xl">Contact us</p>
+            <p>
+               DP Abhushan Ltd. Kalabadevi Road,
+              <br /> 
+              299/301 Johar Palace, <br>
+              2nd Floor, Room No.9/3A <br>
+              Above Maharashtra Bank, <br>
+              Mumbai (Maharashtra)
+              <br>
+        
+              <span class="block">
+              Ph. No.: 02261-838402
+            
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
