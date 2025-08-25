@@ -1,102 +1,102 @@
-      const toggleBtn = document.getElementById("menu-toggle");
-      const drawer = document.getElementById("drawer");
-      const closeBtn = document.getElementById("close-drawer");
-      const overlay = document.getElementById("overlay");
+const toggleBtn = document.getElementById("menu-toggle");
+const drawer = document.getElementById("drawer");
+const closeBtn = document.getElementById("close-drawer");
+const overlay = document.getElementById("overlay");
 
-      toggleBtn.addEventListener("click", () => {
-        drawer.classList.remove("-translate-x-full");
-        overlay.classList.remove("hidden");
-      });
+toggleBtn.addEventListener("click", () => {
+  drawer.classList.remove("-translate-x-full");
+  overlay.classList.remove("hidden");
+});
 
-      closeBtn.addEventListener("click", () => {
-        drawer.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
-      });
+closeBtn.addEventListener("click", () => {
+  drawer.classList.add("-translate-x-full");
+  overlay.classList.add("hidden");
+});
 
-      overlay.addEventListener("click", () => {
-        drawer.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
-      });
+overlay.addEventListener("click", () => {
+  drawer.classList.add("-translate-x-full");
+  overlay.classList.add("hidden");
+});
 
 
 
-      
+
 // drawers menu
 function navigateToScheme() {
-    Toaster.postMessage('navigateScheme');
-  }
+  Toaster.postMessage('navigateScheme');
+}
 
-  function navigateToCatalogues() {
-    Toaster.postMessage('navigateToCatalogues');
-  }
-
-
-  function navigateToQuickPurchase() {
-    Toaster.postMessage('navigateToQuickPurchase');
-  }
+function navigateToCatalogues() {
+  Toaster.postMessage('navigateToCatalogues');
+}
 
 
+function navigateToQuickPurchase() {
+  Toaster.postMessage('navigateToQuickPurchase');
+}
 
-  
-  
-  function navigateToBankDetails() {
-    Toaster.postMessage('navigateBankDetails');
-  }
-  
-  function navigateToKyc() {
-    Toaster.postMessage('navigateKyc');
-  }
-  
-  function navigateToRate() {
-    Toaster.postMessage('navigateRate');
-  }
-  
-  function navigateSchemeRecords() {
-    Toaster.postMessage('navigateSchemeRecords');
-  }
-  
-  function navigateToCustomerCard() {
-    Toaster.postMessage('navigateCustomerCard');
-  }
 
-  function navigateTransactionHistory() {
-    Toaster.postMessage('navigateTransactionHistory');
-  }
 
-  function navigateToMyOrder() {
-    Toaster.postMessage('navigateToMyOrder');
-  }
 
-  function navigateToUserProfile() {
-    Toaster.postMessage('navigateToUserProfile');
-  }
 
-  function navigateToDigitalGold() {
-    Toaster.postMessage('navigateToDigitalGold');
-  }
+function navigateToBankDetails() {
+  Toaster.postMessage('navigateBankDetails');
+}
 
-  function navigateToPanchang() {
-    Toaster.postMessage('navigateToPanchang');
-  }
+function navigateToKyc() {
+  Toaster.postMessage('navigateKyc');
+}
 
-  function navigateToFeedback() {
-    Toaster.postMessage('navigateToFeedback');
-  }
+function navigateToRate() {
+  Toaster.postMessage('navigateRate');
+}
 
-  function navigateToSetting() {
-    Toaster.postMessage('navigateToSetting');
-  }
+function navigateSchemeRecords() {
+  Toaster.postMessage('navigateSchemeRecords');
+}
 
-  function setUserName(username) {
-    // Find the element by ID and set the text content
-    document.getElementById("user-name-display").innerText = "Welcome, " + username;
+function navigateToCustomerCard() {
+  Toaster.postMessage('navigateCustomerCard');
+}
+
+function navigateTransactionHistory() {
+  Toaster.postMessage('navigateTransactionHistory');
+}
+
+function navigateToMyOrder() {
+  Toaster.postMessage('navigateToMyOrder');
+}
+
+function navigateToUserProfile() {
+  Toaster.postMessage('navigateToUserProfile');
+}
+
+function navigateToDigitalGold() {
+  Toaster.postMessage('navigateToDigitalGold');
+}
+
+function navigateToPanchang() {
+  Toaster.postMessage('navigateToPanchang');
+}
+
+function navigateToFeedback() {
+  Toaster.postMessage('navigateToFeedback');
+}
+
+function navigateToSetting() {
+  Toaster.postMessage('navigateToSetting');
+}
+
+function setUserName(username) {
+  // Find the element by ID and set the text content
+  document.getElementById("user-name-display").innerText = "Welcome, " + username;
 }
 function navigateToHomePage() {
-    Toaster.postMessage('navigateToHomePage');
+  Toaster.postMessage('navigateToHomePage');
 }
 
 
-       
+
 // brandSwiper
 const brandSwiper = new Swiper(".brandSwiper", {
   loop: true,
@@ -124,23 +124,18 @@ AOS.init({
   once: false,
 });
 
-// Initialize Swiper
-const tabsSwiper = new Swiper(".tabSwiper", {
-    
-  slidesPerView: 3,
-  spaceBetween: 4,
-  loop: true,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  
-  breakpoints: {
-    425: {
-      slidesPerView: 3,
-    },
-    375: {
-      slidesPerView: 3,
-    },
-  },
+
+const showMoreBtn = document.getElementById('showMoreBtn');
+const extraTabs = document.querySelectorAll('.extra-tab');
+let expanded = false;
+
+showMoreBtn.addEventListener('click', () => {
+  expanded = !expanded;
+  extraTabs.forEach(tab => {
+    tab.style.display = expanded ? 'flex' : 'none';
+  });
+
+  // Update arrow and text
+  showMoreBtn.querySelector('span:first-child').textContent = expanded ? '▲' : '▼';
+  showMoreBtn.querySelector('span:last-child').textContent = expanded ? 'Show Less' : 'Show More';
 });
